@@ -1,8 +1,12 @@
 {
   "name": "gtm-tracker",
   "version": "1.0.0",
-  "description": "A simple tracker for Google Tag Manager",
-  "main": "/src/gtm-tracker.js",
+  "description": "A click tracker for Google Tag Manager",
+  "main": "src/gtm-tracker.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:rodrigolungui/gtm-tracker.git"
+  },
   "dependencies": {},
   "devDependencies": {
     "grunt": "^0.4.5",
@@ -12,6 +16,7 @@
     "load-grunt-tasks": "^3.2.0"
   },
   "keywords": [
+    "Google Tag Manager",
     "tracker",
     "gtm",
     "javascript"
