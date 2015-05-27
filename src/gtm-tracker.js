@@ -45,10 +45,7 @@
 
     if (global.dataLayer !== undefined) {
       dataLayer.push(options);
-      return true;
     }
-
-    return false;
   };
 
   GTMTracker.fetchOptions = function() {
