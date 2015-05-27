@@ -19,8 +19,15 @@
       var element = event.target,
           data = element.getAttribute('data-gtm');
 
-      if (data)
+      do {
+        data = element.getAttribute('data-gtm');
+        element = element.parentElement;
+      } while (element && data === undefined);
+
+      if (data) {  
         this.fetchOptions(data.split(/\s*,\s*/));
+        this.trackEvent();
+      }
 
       event.preventDefault();
     }.bind(this));
@@ -46,19 +53,19 @@
   };
 
   GTMTracker.fetchOptions = function() {
-    var data = [ ].slice.call(arguments);
+    var options = [ ].slice.call(arguments);
 
-    if (data && data[0]) {
-      var data = data[0],
+    if (options && options[0]) {
+      var data = options[0],
           eventAction = data[0],
           eventLabel = data[1];
 
-      var options = {
+      var _options = {
         'eventAction': eventAction,
         'eventLabel': eventLabel
       };
-      this.setProperties(options);
-      this.trackEvent();
+
+      this.setProperties(_options);
     }
   };
 })(window);
