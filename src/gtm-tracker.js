@@ -17,12 +17,12 @@
   GTMTracker.bindEvents = function() {
     document.body.addEventListener('click', function(event){
       var element = event.target,
-          data = element.getAttribute('data-gtm');
+          data;
 
       do {
         data = element.getAttribute('data-gtm');
         element = element.parentElement;
-      } while (element && data === undefined);
+      } while (element && element.parentElement && data === null);
 
       if (data) {  
         this.fetchOptions(data.split(/\s*,\s*/));
