@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>GTM Tracker</title>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+	<header>
+		<h1>GTM Tracker</h1>
+	</header>
+
+	<section class="usage">
+		<div>
+			<h2>
+				Usage
+			</h2>
+			<div class="block-code">
+				<h3>Add GTMTracker in your page</h3>
+				<pre>
+&lt;script type="text/javascript" src="gtm-tracker.js"&gt;&lt;/script&gt;
+				</pre>
+			</div>
+			<div class="block-code">
+				<h3>GTMTracker init</h3>
+				<pre>
+GTMTracker.init({
+	'event': 'eventTracking',
+	'eventCategory': 'your event category'
+});
+				</pre>
+			</div>
+			<div class="block-code">
+				<h3>In your tag link</h3>
+				<pre>
+&lt;a href="#" <strong>data-gtm="eventAction, eventLabel"</strong>&gt;Test2&lt;/a&gt;
+				</pre>
+			</div>
+		</div>
+	</section>
+
+	<section class="debug">
+		<h2>Testing</h2>
+		<div class="left">
+			<ul>
+				<li>
+					<a href="#" data-gtm="Footer, Banner Footer">Banner</a>
+				</li>
+				<li>
+					<a href="#" data-gtm="Footer, Find Footer">Find</a>
+				</li>
+				<li>
+					<a href="#" data-gtm="Footer, Facebook Footer">Facebook</a>
+				</li>
+				<li>
+					<a href="#" data-gtm="Footer, Twitter Footer">Twitter</a>
+				</li>
+				<li>
+					<a href="#" data-gtm="Footer, G+ Footer">G+</a>
+				</li>
+				<li>
+					<a href="#" data-gtm="Footer, Foo Footer">Foo</a>
+				</li>
+			</ul>
+		</div>
+		<div class="right call">
+			<h3>Call</h2>
+			<pre>Click in a test link!</pre>
+		</div>
+	</section>
+	<script type="text/javascript" src="../src/gtm-tracker.js"></script>
+	<script type="text/javascript">
+		// Test code
+		GTMTracker.init({
+			'event': 'eventTracking',
+			'eventCategory': 'your event category'
+		});
+
+		var call = document.querySelector('.call pre');
+
+		document.body.addEventListener('click', function(event){
+			var el = event.target;
+
+			if (el.getAttribute('data-gtm')) {
+				var gtmEvent = GTMTracker.options.event,
+					gtmEventCategory = GTMTracker.options.eventCategory,
+					gtmEventAction = GTMTracker.options.eventAction,
+					gtmEventLabel = GTMTracker.options.eventLabel;
+
+				call.innerHTML = 'dataLayer.push(' + JSON.stringify(GTMTracker.options) + ');';
+			}
+		});
+
+	</script>
+</body>
+</html>	
