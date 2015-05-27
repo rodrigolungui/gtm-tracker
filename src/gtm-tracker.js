@@ -28,8 +28,7 @@
         this.fetchOptions(data.split(/\s*,\s*/));
         this.trackEvent();
       }
-
-      event.preventDefault();
+      
     }.bind(this));
   };
 
